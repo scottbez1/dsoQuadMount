@@ -1,9 +1,9 @@
 
 eps = 0.01;
-thickness = 2;
+thickness = 1.5;
 
 inner_width = 98;
-inner_length = 30; // XXX
+inner_length = 56;
 inner_width_with_bevel = 93;
 bevel_width = (inner_width - inner_width_with_bevel)/2;
 
@@ -183,4 +183,8 @@ module dso_quad_mount() {
 }
 
 dso_quad_mount();
+
+%translate([-inner_width/2, 0, 0]) {
+    cube([inner_width, inner_length, inner_height]);
+}
 
