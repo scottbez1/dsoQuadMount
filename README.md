@@ -3,6 +3,9 @@
 
 Holds a DSO Quad (DSO203) and has space for a 1/4-20 nut so it can be attached to any standard tripod mount. See photos below:
 
+![Photo of model](/assets/model.png?raw=true)
+
 ![Photo of front](/assets/front.jpg?raw=true)
 
 ![Photo of back](/assets/back.jpg?raw=true)
+
