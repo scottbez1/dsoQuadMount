@@ -1,6 +1,6 @@
 
 eps = 0.01;
-thickness = 1.5;
+thickness = 2;
 
 inner_width = 98;
 inner_length = 56;
@@ -89,7 +89,7 @@ module corner() {
     }
 }
 
-module beveled_profile_sturdy() {
+module beveled_profile_sturdy(wall_thickness) {
     points = [
         [0, 0],
         [0, thickness],
@@ -97,8 +97,8 @@ module beveled_profile_sturdy() {
         [bevel_width, thickness + inner_height - bevel_height],
         [0, thickness + inner_height],
         [0, thickness + inner_height + thickness],
-        [bevel_width + eps, thickness + inner_height + thickness],
-        [bevel_width + eps, 0],
+        [bevel_width + wall_thickness, thickness + inner_height + thickness],
+        [bevel_width + wall_thickness, 0],
     ];
     polygon(points=points);
 }
@@ -114,10 +114,19 @@ module nut_holder() {
                 translate([nut_holder_width/2, nut_holder_length + bevel_width, 0]) {
                     rotate([90, 0, -90]) {
                         linear_extrude(height=nut_holder_width) {
-                            beveled_profile_sturdy();
+                            beveled_profile_sturdy(thickness);
                         }
                     }
                 }
+
+                translate([inner_width/2 - corner_inner_radius, nut_holder_length + corner_inner_radius, 0]) {
+                    rotate([90, 0, -90]) {
+                        linear_extrude(height=inner_width - 2*corner_inner_radius) {
+                            beveled_profile_holder();
+                        }
+                    }
+                }
+
             }
 
             // 1/4-20 nut
